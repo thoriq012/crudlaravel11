@@ -1,56 +1,63 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Crud Laravel</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1 class="text-center mb-4">Tambah Data Pegawai</h1>
+@extends('layout.admin')
 
-    <div class="container">
+@section('content')
 
-        <div class="row justify-content-center">
-          <div class="col-8">
-            <div class="card">
-              <div class="card-body">
-                <form action="/insertdata" method="POST" enctype="multipart/form-data">
-                  @csrf
-                  <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nama</label>
-                    <input type="text" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Jenis Kelamin</label>
-                    <select class="form-select" name="jeniskelamin" aria-label="Default select example">
-                      <option selected>Pilih Jenis Kelamin</option>
-                      <option value="pria">Pria</option>
-                      <option value="wanita">Wanita</option>
-                    </select>
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">No Telpon</label>
-                    <input type="number" name="notelpon" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control">
-                  </div>
+<body>
+  <br>
+  <br>
+  
+  
+  <div class="content-wrapper ">
 
-                  <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Masukan  Foto</label>
-                    <input type="file" name="foto" class="form-control">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-              </div>
+      <div class="row justify-content-center">
+        
+        <div class="col-8">
+          <h1 class="text-center mb-5 mt-5">Tambah Data Pegawai</h1>
+          <div class="card">
+            <div class="card-body">
+              <form action="/insertdata" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Nama</label>
+                  <input type="text" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  @error('nama')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Jenis Kelamin</label>
+                  <select class="form-select" name="jeniskelamin" aria-label="Default select example">
+                    <option selected>Pilih Jenis Kelamin</option>
+                    <option value="pria">Pria</option>
+                    <option value="wanita">Wanita</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">No Telpon</label>
+                  <input type="number" name="notelpon" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  @error('notelpon')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email</label>
+                  <input type="email" name="email" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Masukan  Foto</label>
+                  <input type="file" name="foto" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
             </div>
           </div>
         </div>
-    </div>
+      </div>
+  </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
-</html>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+@endsection
